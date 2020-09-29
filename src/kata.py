@@ -6,10 +6,11 @@ class PlayerScore(IntEnum):
     Fifteen = 1
     Thirty = 2
     Fourty = 3
-    # etc
+    Wins = 6
+    Loses = 7
 
 
-class GameScore(object):    # enum?
+class GameScore(object):    
     def __init__(self, server_score: PlayerScore, receiver_score: PlayerScore):
         self.server_score = server_score
         self.receiver_score = receiver_score
@@ -30,6 +31,10 @@ class GameScore(object):    # enum?
             return GameScore(
                 server_score=PlayerScore.Fourty,
                 receiver_score=self.receiver_score)
+        elif self.server_score == PlayerScore.Fourty:
+            return GameScore(
+                server_score=PlayerScore.Wins,
+                receiver_score=PlayerScore.Loses)
 
 
 #

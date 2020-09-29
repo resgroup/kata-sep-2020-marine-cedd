@@ -3,43 +3,52 @@ from src.kata import GameScore, PlayerScore
 
 server_wins = [
     (
-        PlayerScore.Zero,
-        PlayerScore.Zero, 
+        GameScore(
+            PlayerScore.Zero,
+            PlayerScore.Zero),
         GameScore(
             server_score=PlayerScore.Fifteen,
             receiver_score=PlayerScore.Zero)
     ),
     (
-        PlayerScore.Fifteen,
-        PlayerScore.Zero, 
+        GameScore(
+            PlayerScore.Fifteen,
+            PlayerScore.Zero),
         GameScore(
             server_score=PlayerScore.Thirty,
             receiver_score=PlayerScore.Zero)
     ),
     (
-        PlayerScore.Thirty,
-        PlayerScore.Zero, 
+        GameScore(
+            PlayerScore.Thirty,
+            PlayerScore.Zero),
         GameScore(
             server_score=PlayerScore.Fourty,
             receiver_score=PlayerScore.Zero)
     ),
     (
-        PlayerScore.Fourty,
-        PlayerScore.Zero,
+        GameScore(
+            PlayerScore.Fourty,
+            PlayerScore.Zero),
+        GameScore(
+            server_score=PlayerScore.Wins,
+            receiver_score=PlayerScore.Loses)
         # GameScore(winner=Players.server)
-        GameScore(server_score=PlayerScore.Wins, receiver_score=PlayerScore.Loses)
         # ServerWins()
         # GameResult(winner=Players.server)
+    ),
+    (
+        GameScore(
+            PlayerScore.Duece,
+            PlayerScore.Duece),
+        #duece_game_Score(),
+        GameScore(server_score=PlayerScore.Advantage, receiver_score=PlayerScore.Fourty)
     )
 ]
 
 
-@pytest.mark.parametrize("server_score,receiver_score,expected_score", server_wins)
-def test_server_wins(server_score, receiver_score, expected_score):
-    current_score = GameScore(
-        server_score=server_score,
-        receiver_score=receiver_score)
-    
+@pytest.mark.parametrize("current_score,expected_score", server_wins)
+def test_server_wins(current_score, expected_score):
     new_score = current_score.server_wins_point()
 
     assert new_score == expected_score
