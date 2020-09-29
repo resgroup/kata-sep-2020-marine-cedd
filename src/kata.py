@@ -37,11 +37,37 @@ class GameScore(object):
             return GameScore(
                 server_score=PlayerScore.Wins,
                 receiver_score=self.receiver_score)
-        elif self.server_score == PlayerScore.Fourty and self.server_score == PlayerScore.Fourty:
+        elif self.server_score == PlayerScore.Fourty and self.receiver_score == PlayerScore.Fourty:
             return GameScore(
                 server_score=PlayerScore.Advantage,
-                receiver_score=PlayerScore.Fourty)
+                receiver_score=self.receiver_score)
         elif self.server_score == PlayerScore.Advantage:
             return GameScore(
                 server_score=PlayerScore.Wins,
                 receiver_score=self.receiver_score)
+
+    def receiver_wins_point(self):
+        if self.receiver_score == PlayerScore.Zero:
+            return GameScore(
+                server_score=self.server_score,
+                receiver_score=PlayerScore.Fifteen)
+        elif self.receiver_score == PlayerScore.Fifteen:
+            return GameScore(
+                server_score=self.server_score,
+                receiver_score=PlayerScore.Thirty)
+        elif self.receiver_score == PlayerScore.Thirty:
+            return GameScore(
+                server_score=self.server_score,
+                receiver_score=PlayerScore.Fourty)
+        elif self.receiver_score == PlayerScore.Fourty and self.server_score != PlayerScore.Fourty:
+            return GameScore(
+                server_score=self.server_score,
+                receiver_score=PlayerScore.Wins)
+        elif self.receiver_score == PlayerScore.Fourty and self.server_score == PlayerScore.Fourty:
+            return GameScore(
+                server_score=self.server_score,
+                receiver_score=PlayerScore.Advantage)
+        elif self.receiver_score == PlayerScore.Advantage:
+            return GameScore(
+                server_score=self.server_score,
+                receiver_score=PlayerScore.Wins)

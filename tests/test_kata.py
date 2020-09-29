@@ -113,7 +113,7 @@ receiver_wins = [
 ]
 
 
-@pytest.mark.parametrize("current_score,expected_score", server_wins)
+@pytest.mark.parametrize("current_score, expected_score", receiver_wins)
 def test_receiver_wins(current_score, expected_score):
     new_score = current_score.receiver_wins_point()
 
