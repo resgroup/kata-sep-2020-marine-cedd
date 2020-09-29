@@ -42,6 +42,7 @@ server_wins = [
             PlayerScore.Duece,
             PlayerScore.Duece),
         #duece_game_Score(),
+        #GameScore(duece=True),
         GameScore(server_score=PlayerScore.Advantage, receiver_score=PlayerScore.Fourty)
     )
 ]
