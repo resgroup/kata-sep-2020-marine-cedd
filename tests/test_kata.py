@@ -1,13 +1,12 @@
-from src.kata import update_score, GameScore, PlayerScore, Player
+from src.kata import GameScore, PlayerScore
+
 
 def test_0_0_server_wins():
     current_score = GameScore(
         server_score=PlayerScore.Zero,
         receiver_score=PlayerScore.Zero)
     
-    new_score = current_score.update_score(
-        current_score, 
-        winner=Player.Server)
+    new_score = current_score.server_wins_point()
 
     expected_score = GameScore(
         server_score=PlayerScore.Fifteen,
