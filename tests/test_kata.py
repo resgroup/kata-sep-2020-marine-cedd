@@ -22,6 +22,14 @@ server_wins = [
         GameScore(
             server_score=PlayerScore.Fourty,
             receiver_score=PlayerScore.Zero)
+    ),
+    (
+        PlayerScore.Fourty,
+        PlayerScore.Zero,
+        # GameScore(winner=Players.server)
+        GameScore(server_score=PlayerScore.Wins, receiver_score=PlayerScore.Loses)
+        # ServerWins()
+        # GameResult(winner=Players.server)
     )
 ]
 

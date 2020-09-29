@@ -5,6 +5,7 @@ class PlayerScore(IntEnum):
     Zero = 0
     Fifteen = 1
     Thirty = 2
+    Fourty = 3
     # etc
 
 
@@ -20,11 +21,15 @@ class GameScore(object):    # enum?
         if self.server_score == PlayerScore.Zero:
             return GameScore(
                 server_score=PlayerScore.Fifteen,
-                receiver_score=PlayerScore.Zero)
-        else:
+                receiver_score=self.receiver_score)
+        elif self.server_score == PlayerScore.Fifteen:
             return GameScore(
                 server_score=PlayerScore.Thirty,
-                receiver_score=PlayerScore.Zero)
+                receiver_score=self.receiver_score)
+        elif self.server_score == PlayerScore.Thirty:
+            return GameScore(
+                server_score=PlayerScore.Fourty,
+                receiver_score=self.receiver_score)
 
 
 #
