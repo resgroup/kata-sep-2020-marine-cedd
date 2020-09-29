@@ -51,7 +51,7 @@ server_wins = [
             PlayerScore.Fourty),
         #duece_game_Score(),
         #GameScore(duece=True),
-        GameScore(server_score=PlayerScore.Wins, receiver_score=PlayerScore.Loses)
+        GameScore(server_score=PlayerScore.Wins, receiver_score=PlayerScore.Fourty)
     )
 ]
 
