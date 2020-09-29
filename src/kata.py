@@ -4,7 +4,7 @@ from enum import IntEnum
 class PlayerScore(IntEnum):
     Zero = 0
     Fifteen = 1
-    # Thirty = 2
+    Thirty = 2
     # etc
 
 
@@ -17,9 +17,14 @@ class GameScore(object):    # enum?
         return self.__dict__ == other.__dict__
 
     def server_wins_point(self):
-        return GameScore(
-            server_score=PlayerScore.Fifteen,
-            receiver_score=PlayerScore.Zero)
+        if self.server_score == PlayerScore.Zero:
+            return GameScore(
+                server_score=PlayerScore.Fifteen,
+                receiver_score=PlayerScore.Zero)
+        else:
+            return GameScore(
+                server_score=PlayerScore.Thirty,
+                receiver_score=PlayerScore.Zero)
 
 
 #
