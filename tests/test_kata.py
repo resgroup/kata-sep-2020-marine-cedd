@@ -32,23 +32,31 @@ server_wins = [
             PlayerScore.Zero),
         GameScore(
             server_score=PlayerScore.Wins,
-            receiver_score=PlayerScore.Loses)
+            receiver_score=PlayerScore.Zero)
         # GameScore(winner=Players.server)
         # ServerWins()
         # GameResult(winner=Players.server)
     ),
     (
         GameScore(
-            PlayerScore.Duece,
-            PlayerScore.Duece),
+            PlayerScore.Fourty,
+            PlayerScore.Fourty),
         #duece_game_Score(),
         #GameScore(duece=True),
         GameScore(server_score=PlayerScore.Advantage, receiver_score=PlayerScore.Fourty)
+    ),
+    (
+        GameScore(
+            PlayerScore.Advantage,
+            PlayerScore.Fourty),
+        #duece_game_Score(),
+        #GameScore(duece=True),
+        GameScore(server_score=PlayerScore.Wins, receiver_score=PlayerScore.Loses)
     )
 ]
 
 
-@pytest.mark.parametrize("current_score,expected_score", server_wins)
+@pytest.mark.parametrize("current_score, expected_score", server_wins)
 def test_server_wins(current_score, expected_score):
     new_score = current_score.server_wins_point()
 

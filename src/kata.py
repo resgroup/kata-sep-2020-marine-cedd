@@ -8,6 +8,8 @@ class PlayerScore(IntEnum):
     Fourty = 3
     Wins = 6
     Loses = 7
+    Advantage = 8
+    # Duece = 9
 
 
 class GameScore(object):    
@@ -31,11 +33,11 @@ class GameScore(object):
             return GameScore(
                 server_score=PlayerScore.Fourty,
                 receiver_score=self.receiver_score)
-        elif self.server_score == PlayerScore.Fourty:
+        elif self.server_score == PlayerScore.Fourty and self.receiver_score != PlayerScore.Fourty:
             return GameScore(
                 server_score=PlayerScore.Wins,
-                receiver_score=PlayerScore.Loses)
-
-
-#
-# class Player(object):
+                receiver_score=self.receiver_score)
+        elif self.server_score == PlayerScore.Fourty and self.server_score == PlayerScore.Fourty:
+            return GameScore(
+                server_score=PlayerScore.Advantage,
+                receiver_score=PlayerScore.Fourty)
